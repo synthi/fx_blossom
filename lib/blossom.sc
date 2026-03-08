@@ -2,12 +2,12 @@ FxBlossom : FxBase {
 
     *new { 
         var ret = super.newCopyArgs(nil, \none, (
-            decay: 3.0,
-            bloom: 0.5,
-            damp: 10000,
-            predelay: 0.0,
-            mod_rate: 0.5,
-            mod_depth: 0.001
+            decay: 4.75,
+            bloom: 1.80,
+            damp: 3500,
+            predelay: 0.110,
+            mod_rate: 0.300,
+            mod_depth: 0.002
         ), nil, 1.0);
         ^ret;
     }
