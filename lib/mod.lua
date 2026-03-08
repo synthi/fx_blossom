@@ -43,12 +43,12 @@ function FxBlossom:add_params()
     FxBlossom:add_slot("fx_blossom_slot", "slot")
     
     -- Tapers: id, name, key, min, max, default, k (curve), units
-    FxBlossom:add_taper("fx_blossom_decay", "decay", "decay", 0.1, 100.0, 3.0, 3, "s")
-    FxBlossom:add_taper("fx_blossom_bloom", "bloom", "bloom", 0.01, 2.0, 0.5, 0, "")
-    FxBlossom:add_taper("fx_blossom_damp", "damp", "damp", 200, 18000, 10000, 4, "hz")
-    FxBlossom:add_taper("fx_blossom_predelay", "predelay", "predelay", 0.0, 1.0, 0.0, 0, "s")
-    FxBlossom:add_taper("fx_blossom_mod_rate", "mod rate", "mod_rate", 0.0, 10.0, 0.5, 0, "hz")
-    FxBlossom:add_taper("fx_blossom_mod_depth", "mod depth", "mod_depth", 0.0, 0.01, 0.001, 0, "s")
+    FxBlossom:add_taper("fx_blossom_decay", "decay", "decay", 0.1, 100.0, 4.8, 3, "s")
+    FxBlossom:add_taper("fx_blossom_bloom", "bloom", "bloom", 0.01, 2.0, 1.80, 0, "")
+    FxBlossom:add_taper("fx_blossom_damp", "damp", "damp", 200, 18000, 3400, 4, "hz")
+    FxBlossom:add_taper("fx_blossom_predelay", "predelay", "predelay", 0.0, 1.0, 0.2, 0, "s")
+    FxBlossom:add_taper("fx_blossom_mod_rate", "mod rate", "mod_rate", 0.0, 10.0, 0.4, 0, "hz")
+    FxBlossom:add_taper("fx_blossom_mod_depth", "mod depth", "mod_depth", 0.0, 0.01, 0.002, 0, "s")
 end
 
 mod.hook.register("script_post_init", "fx blossom mod post init", function()
