@@ -89,9 +89,10 @@ FxBlossom : FxBase {
             rev_filt_l = LPF.ar(ap_l, damp_kr);
             rev_filt_r = LPF.ar(ap_r, damp_kr);
 
-            // DC Blocking & Transparent Saturation (Soft-Clipper)
-            rev_out_l = (LeakDC.ar(rev_filt_l) * 0.3).tanh;
-            rev_out_r = (LeakDC.ar(rev_filt_r) * 0.3).tanh;
+            // DC Blocking & Transparent Saturation (Soft-Clipper + Equal Gain Makeup)
+            // El factor 3.333 restaura la ganancia unitaria tras el pad de 0.3. El softclip protege el bus D/A.
+            rev_out_l = ((LeakDC.ar(rev_filt_l) * 0.3).tanh * 3.333).softclip;
+            rev_out_r = ((LeakDC.ar(rev_filt_r) * 0.3).tanh * 3.333).softclip;
 
             Out.ar(outBus,[rev_out_l, rev_out_r]);
         }).add;
