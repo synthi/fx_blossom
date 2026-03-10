@@ -54,7 +54,7 @@ FxBlossom : FxBase {
             input = In.ar(inBus, 2);
 
             // Pre-Delay (Max 1.0s)
-            rev_in = DelayN.ar(input, 1.0, predelay_kr);
+            rev_in = DelayN.ar(input, 1.0, predelay_kr) * 0.5;
 
             // Modulation LFOs (Descorrelación Áurea 1.1618)
             lfo_l = LFNoise2.kr(mod_rate_kr) * mod_depth_kr;
@@ -74,6 +74,11 @@ FxBlossom : FxBase {
             // Cross-Pollination (Inyección Estéreo Cruzada del 20%)
             cross_l = combs_l + (combs_r * 0.2);
             cross_r = combs_r + (combs_l * 0.2);
+            // NUEVO: Baffle Acústico (Filtro Pasa-Altos suave a 60Hz)
+            // Limpia la masa de graves del tanque antes de que entre a la etapa de difusión (Bloom)
+            cross_l = HPF.ar(cross_l, 60);
+            cross_r = HPF.ar(cross_r, 60);
+            
 
             // Series Allpass Filters (Diffusion / Bloom)
             ap_l = cross_l;
@@ -90,8 +95,8 @@ FxBlossom : FxBase {
             rev_filt_r = LPF.ar(ap_r, damp_kr);
 
             // DC Blocking & Transparent Saturation (Soft-Clipper)
-            rev_out_l = (LeakDC.ar(rev_filt_l) * 0.3).tanh;
-            rev_out_r = (LeakDC.ar(rev_filt_r) * 0.3).tanh;
+            rev_out_l = ((LeakDC.ar(rev_filt_l) * 0.1).tanh * 2.0).softclip;
+            rev_out_r = ((LeakDC.ar(rev_filt_r) * 0.1).tanh * 2.0).softclip;
 
             Out.ar(outBus,[rev_out_l, rev_out_r]);
         }).add;
