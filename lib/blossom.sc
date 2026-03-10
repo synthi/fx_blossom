@@ -95,8 +95,8 @@ FxBlossom : FxBase {
             rev_filt_r = LPF.ar(ap_r, damp_kr);
 
             // DC Blocking & Transparent Saturation (Soft-Clipper)
-            rev_out_l = ((LeakDC.ar(rev_filt_l) * 0.1).tanh * 3.0).softclip;
-            rev_out_r = ((LeakDC.ar(rev_filt_r) * 0.1).tanh * 3.0).softclip;
+            rev_out_l = ((LeakDC.ar(rev_filt_l) * 0.05).tanh * 3.6).softclip;
+            rev_out_r = ((LeakDC.ar(rev_filt_r) * 0.05).tanh * 3.6).softclip;
 
             Out.ar(outBus,[rev_out_l, rev_out_r]);
         }).add;
