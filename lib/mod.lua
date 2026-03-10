@@ -50,7 +50,7 @@ function FxBlossom:add_params()
     FxBlossom:add_taper("fx_blossom_damp", "damp", "damp", 200, 18000, 3400, 4, "hz")
     FxBlossom:add_taper("fx_blossom_predelay", "predelay", "predelay", 0.0, 1.0, 0.2, 0, "s")
     FxBlossom:add_taper("fx_blossom_mod_rate", "mod rate", "mod_rate", 0.0, 10.0, 0.4, 0, "hz")
-    FxBlossom:add_taper("fx_blossom_mod_depth", "mod depth", "mod_depth", 0.0, 0.01, 0.002, 0, "s")
+    FxBlossom:add_taper("fx_blossom_mod_depth", "mod depth", "mod_depth", 0.0, 0.0015, 0.0005, 0, "s")
 end
 
 mod.hook.register("script_post_init", "fx blossom mod post init", function()
