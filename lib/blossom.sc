@@ -54,7 +54,7 @@ FxBlossom : FxBase {
             input = In.ar(inBus, 2);
 
             // Pre-Delay (Max 1.0s)
-            rev_in = DelayN.ar(input, 1.0, predelay_kr) * 0.5;
+            rev_in = DelayN.ar(input, 1.0, predelay_kr) * 0.1;
 
             // Modulation LFOs (Descorrelación Áurea 1.1618)
             lfo_l = LFNoise2.kr(mod_rate_kr) * mod_depth_kr;
@@ -95,8 +95,8 @@ FxBlossom : FxBase {
             rev_filt_r = LPF.ar(ap_r, damp_kr);
 
             // DC Blocking & Transparent Saturation (Soft-Clipper)
-            rev_out_l = ((LeakDC.ar(rev_filt_l) * 0.1).tanh * 2.0).softclip;
-            rev_out_r = ((LeakDC.ar(rev_filt_r) * 0.1).tanh * 2.0).softclip;
+            rev_out_l = ((LeakDC.ar(rev_filt_l) * 0.1).tanh * 3.0).softclip;
+            rev_out_r = ((LeakDC.ar(rev_filt_r) * 0.1).tanh * 3.0).softclip;
 
             Out.ar(outBus,[rev_out_l, rev_out_r]);
         }).add;
