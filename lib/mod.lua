@@ -40,6 +40,8 @@ local FxBlossom = fx:new{
 -- Asignación de métodos (Fase 2)
 function FxBlossom:add_params()
     params:add_separator("fx_blossom", "fx blossom")
+    -- Agrupamos los 7 parámetros bajo un solo menú colapsable para mantener la UI limpia
+    params:add_group("fx_blossom", "fx blossom", 8)
     FxBlossom:add_slot("fx_blossom_slot", "slot")
     
     -- Tapers: id, name, key, min, max, default, k (curve), units
